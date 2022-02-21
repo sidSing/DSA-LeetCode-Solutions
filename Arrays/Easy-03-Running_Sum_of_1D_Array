@@ -1,0 +1,16 @@
+//https://leetcode.com/problems/running-sum-of-1d-array/
+
+class Solution {
+    public int[] runningSum(int[] nums) {
+        int sum = 0;
+        int[] temp = new int[nums.length];
+        for(int i = 0; i<nums.length ;i++){
+        
+        //Accumulate sum of current number in sum variable.
+            sum += nums[i];
+            //Store sum in temp as the loop continues 
+            temp[i]= sum;
+        }
+        return temp;
+    }
+}
