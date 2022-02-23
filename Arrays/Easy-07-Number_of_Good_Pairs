@@ -1,0 +1,20 @@
+//https://leetcode.com/problems/number-of-good-pairs/
+
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int output = 0;
+        for(int i =0;i<nums.length;i++){
+        
+        //We have to check for same pairs where i < j
+        //Run two for loops where j is always one index higher than i ensuring i is always less than j
+        //Run j till length of array and check for condition nums[i] == nums[j] given in question, increment output variable by 1.
+        
+            for(int j = i+1;j< nums.length;j++){
+                if(nums[i]==nums[j]){
+                    output++;
+                }
+            }
+        }
+        return output;
+    }
+}
