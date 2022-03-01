@@ -1,0 +1,37 @@
+//https://leetcode.com/problems/flipping-an-image/
+
+class Solution {
+    public int[][] flipAndInvertImage(int[][] image) {
+        for(int i =0;i<image.length;i++){
+          //Calling flip function
+            flip(image[i]);
+            //Calling invert function
+            invert(image[i]);
+        }
+        
+        
+        return image;
+    }
+    
+    public static void flip(int[] image){
+    //If length is lenght is 3 then only i = 0 and i = 3-1-i == 2 will flip || ignoring middle one || length is 3, ran 1 time,
+    //Similarly if lenght is 4 then 0 and 3, 1 and 2 will flip || length = 4 ,ran 2 times
+    //Thats why i is run till length/2
+        for(int i =0;i<image.length/2;i++){
+            int temp = image[i];
+            image[i] = image[image.length-1-i];
+            image[(image.length-1)-i] = temp;
+        };
+    }
+    
+    public static void invert(int[] image){
+    //Simply invert 1 = 0 and 0 = 1
+        for(int i =0;i<image.length;i++){
+            if(image[i]==1){
+                image[i] = 0;
+            }else {
+                image[i] = 1;
+            }
+        }
+    }
+}
