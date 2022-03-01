@@ -1,0 +1,26 @@
+//https://leetcode.com/problems/check-if-the-sentence-is-pangram/
+
+class Solution {
+    public boolean checkIfPangram(String sentence) {
+    
+      //26 character in alphabet
+        int[] alphabet = new int[26];
+        Arrays.fill(alphabet,0);
+        
+        for(int i =0;i<sentence.length();i++){
+          //Since all of the alphabets are lower case, convert a to ASCII is equal to 97 ` 97 - 97 = 0 index of alphabet array.
+          //Similarly every alphabet after ASCII 97 represent an index ie. ASCII 98 = b = 98-97 == 1 index.
+          
+              alphabet[(int)sentence.charAt(i) - 97]++;
+        }
+        
+        for(int i : alphabet){
+        //If i = 0 , meaning that character isnt present
+            if(i == 0){
+                return false;
+            }
+        }
+        
+        return true;
+    }
+}
