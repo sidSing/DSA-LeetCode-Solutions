@@ -1,0 +1,19 @@
+//https://leetcode.com/problems/transpose-matrix/
+
+/* In transpose rows become colums,
+length of rows of matrix array become column length of output array
+*/
+
+class Solution {
+    public int[][] transpose(int[][] matrix) {
+         int[][] output  = new int[matrix[0].length][matrix.length];
+
+        for(int i = 0;i<matrix.length;i++) {
+            //Filling columns of output with rows.
+            for (int j = 0; j < matrix[0].length; j++) {
+                output[j][i] = matrix[i][j];
+            }
+        }
+        return  output;
+    }
+}
