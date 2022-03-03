@@ -1,0 +1,19 @@
+//https://leetcode.com/problems/matrix-diagonal-sum/
+
+class Solution {
+    public int diagonalSum(int[][] mat) {
+        int output  = 0;
+        for(int i = 0;i<mat.length;i++){
+
+            //mat.length-i starts from last point and i starts from first point in array
+            //mat.length-1 is only equal to i when length of matrix is even ie. both diagonal intersect.
+            //in even diagonal will not intersect as seen in example problem
+            if(i==(mat.length-1)-i){
+                output += mat[i][i];
+            }else{
+                output += mat[i][i] + mat[i][(mat.length-1)-i];
+            }
+        }
+        return  output;
+    }
+}
