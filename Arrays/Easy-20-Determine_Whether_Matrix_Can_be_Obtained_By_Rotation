@@ -1,0 +1,71 @@
+//https://leetcode.com/problems/determine-whether-matrix-can-be-obtained-by-rotation/
+
+class Solution {
+    public boolean findRotation(int[][] mat, int[][] target) {
+                boolean check = true;
+                
+                
+        for(int i = 0;i<mat.length;i++){
+            for(int j = 0;j<mat[0].length;j++){
+                if(mat[i][j] != target[i][j]){
+                    check = false;
+                    break;
+                }
+                if(check == false){
+                    break;
+                }
+            }
+        }
+        if(check){
+            return true;
+        }
+
+        check= true;
+        for(int i = 0;i< mat.length;i++ ){
+            for(int j = mat.length-1;j>=0;j--){
+                if(mat[j][i] != target[i][mat.length-1-j]){
+                    check = false;
+                    break;
+                }
+                if(check==false){
+                    break;
+                }
+            }
+        }
+        if(check){
+            return true;
+        }
+
+        check= true;
+        for(int i = mat.length-1;i>=0;i--){
+            for(int j = mat.length-1;j>=0;j--){
+                if(mat[i][j] != target[mat.length-1-i][mat.length-1-j]){
+                    check = false;
+                    break;
+                }
+                if(check==false){
+                    break;
+                }
+            }
+        }
+        if(check){
+            return true;
+        }
+        check = true;
+        for(int i = mat.length-1;i>=0;i--){
+            for(int j = 0;j< mat.length;j++){
+                if(mat[j][i] != target[mat.length-1-i][j]){
+                    check = false;
+                    break;
+                }
+                if(check==false){
+                    break;
+                }
+            }
+        }
+        if(check){
+            return true;
+        }
+        return  false;
+    }
+}
