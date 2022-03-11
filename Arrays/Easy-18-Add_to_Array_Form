@@ -1,0 +1,25 @@
+//https://leetcode.com/problems/add-to-array-form-of-integer/
+
+class Solution {
+    public List<Integer> addToArrayForm(int[] num, int k) {
+List<Integer> number = new ArrayList<>();
+        int i = num.length-1;
+        
+        //Check if given number K is net zero or array hasn't run out of bound
+        while (i>=0 || k>0){
+        //There is a case where K is greater than array number
+            if(i >= 0) {
+            //Add last digit of Array to K 
+                k += num[i];
+            }
+            //Add last digit of K to number list
+            number.add(k%10);
+            //Remove the last digit of K ie. 2122/10 = 212
+            k/= 10;
+            i--;
+        }
+        //Reverse the number.
+        Collections.reverse(number);
+        return number;
+    }
+}
