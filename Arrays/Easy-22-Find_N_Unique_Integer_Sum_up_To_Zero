@@ -1,0 +1,21 @@
+Solution -> https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/discuss/1841466/Easy-Peasy-solution-with-explinations
+
+public int[] sumZero(int n) {
+int[] result = new int[n];
+    //If number is even then simply fill opposite value ie 1 , -1 , 2 , -2
+    if(n%2==0){
+        for(int i = 0;i<n/2;i++){
+            result[i] = i+1;
+            result[result.length-1-i]= -(i+1);
+        }
+    }else{
+        //If number is odd then set middle value to 0 because n/2 will ignore midde value is odd and rest same as even
+        result[n/2] = 0;
+        for(int i = 0;i<n/2;i++){
+            result[i] = i+1;
+            result[result.length-1-i]= -(i+1);
+        
+        }
+    }
+    return result;
+}
