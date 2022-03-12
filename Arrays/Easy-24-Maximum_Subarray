@@ -1,0 +1,15 @@
+Solution -> https://leetcode.com/problems/maximum-subarray/discuss/1841695/Easy-Peasy-optimal-solution-with-video-link
+(//https://www.youtube.com/watch?v=jnoVtCKECmQ)
+
+public int maxSubArray(int[] nums) {
+    int localMax = -100001;
+    int globalMax = -100001;
+    for(int i = 0;i< nums.length;i++){
+        //If new element is greater than current sum + new element
+        localMax = nums[i]>(localMax+nums[i])?nums[i] : localMax+nums[i] ;
+        
+        //If localMax is greater than global Max ? t
+        globalMax = globalMax>localMax?globalMax:localMax;
+    }
+    return globalMax;
+}
