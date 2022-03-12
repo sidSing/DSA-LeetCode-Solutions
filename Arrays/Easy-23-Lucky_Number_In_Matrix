@@ -1,0 +1,36 @@
+Solution -> https://leetcode.com/problems/lucky-numbers-in-a-matrix/discuss/1842514/Java-Solution
+
+public List<Integer> luckyNumbers (int[][] matrix) {
+     ArrayList<ArrayList<Integer>> luckyNumber = new ArrayList<>();
+    for(int i = 0;i< matrix.length;i++){
+        luckyNumber.add(new ArrayList<>());
+    }
+	//Check for smallest number in row
+    for(int i = 0;i<matrix.length;i++){
+        int tempMin = Integer.MAX_VALUE;
+        for(int j = 0;j<matrix[0].length;j++){
+            if(matrix[i][j]<tempMin){
+                tempMin= matrix[i][j];
+                luckyNumber.get(i).add(0,tempMin);
+                luckyNumber.get(i).add(1,i);
+                luckyNumber.get(i).add(2,j);
+                luckyNumber.get(i).add(3,0);
+            }
+        }
+        tempMin = 0;
+		//Check for largest number in column
+        for(int k = 0;k<matrix.length;k++){
+            int tempMax = luckyNumber.get(i).get(0);
+            if(matrix[k][luckyNumber.get(i).get(2)]>tempMax){
+                luckyNumber.get(i).add(3,-1);
+            }
+        }
+    }
+
+    for(int i = 0;i<luckyNumber.size();i++){
+        if(luckyNumber.get(i).get(3)!=-1){
+            return Collections.singletonList(luckyNumber.get(i).get(0));
+        }
+    }
+    return new ArrayList<>();
+}
