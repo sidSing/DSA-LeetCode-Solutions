@@ -1,0 +1,19 @@
+Solution -> https://leetcode.com/problems/two-sum/discuss/1842510/Java-Brute-force-approach
+
+public int[] twoSum(int[] nums, int target) {
+ for(int i = 0; i<nums.length;i++){
+     for(int j = 0;j<nums.length;j++){
+         if(i==j){
+             continue;
+         }
+		 //if current i + current j == target
+         if(nums[i]+nums[j]==target){
+             int[] temp = {i,j};
+             return temp;
+         }
+     }
+ }  
+ //If no such case exist return -1-1
+    int[] temp = {-1,-1};
+    return temp;
+}
