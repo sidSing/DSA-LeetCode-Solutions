@@ -1,0 +1,35 @@
+//https://leetcode.com/problems/plus-one/
+
+public int[] plusOne(int[] digits) {
+//If digit isnt equal to 9 then simple add one and return ie. 0,1,2,3,4,5,6,7,8
+ if(digits[digits.length -1] != 9){
+        digits[digits.length-1]++;
+        return digits;
+    }
+	
+	
+    int index = digits.length-1;
+	//Last digit is 9 then +1 now digit is 10
+    digits[index]++;
+	//Run until the number at which index is pointing is either 10 or index has reached 1
+	//Because we use --index here so --1 = 0
+	//If we have used run until index >= 0 its would have given index out of bound because
+	//--index = 0-1 = -1;
+    while(digits[index] == 10 && index >= 1){
+	//We already know number index is pointing to is 10 from while condition simply set it to 0 and add one to number next to it.
+        digits[index] = 0;
+        digits[--index]++;
+    }
+	//There is a condition where number at first index{0} is 10 in that case
+    if(digits[0]== 10){
+	set digit at first index to 0 create a new array of size +1 of digits and add rest entries of digits into temp arraya starting from temp[1]
+        digits[0] = 0;
+        int[] temp = new int[digits.length+1];
+        temp[0] = 1;
+        for(int i = 1;i< digits.length;i++){
+            temp[i] = digits[i-1];
+        }
+        return temp;
+    }
+    return digits;
+}
