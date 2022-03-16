@@ -1,0 +1,45 @@
+//https://leetcode.com/problems/set-matrix-zeroes/discuss/1854193/Java-Easy-Peasy-Solution
+
+public void setZeroes(int[][] matrix) {
+   int[][] result = new int[matrix.length][matrix[0].length];
+//Inputting -1 value in result
+    for(int i = 0;i<matrix.length;i++){
+        for(int j = 0;j< matrix[0].length;j++) {
+            result[i][j] = -1;
+            }
+        }
+	 //Checking if value in input matrix is zero then calling zero function
+    for(int i = 0;i<matrix.length;i++){
+        for(int j = 0;j< matrix[0].length;j++){
+            if(matrix[i][j]==0){
+                zeros(result,i,j);
+            }
+        }
+    }
+//Inputting value of inputted matrix into result matrix if current index in result matrix doesnt point to 0
+    for(int i = 0;i< matrix.length;i++){
+        for(int j = 0;j< matrix[0].length;j++){
+            if(result[i][j]!=0){
+                result[i][j]=matrix[i][j];
+            }
+        }
+    }
+//Placing value of result into matrix since return type is void
+    for(int i = 0;i<matrix.length;i++){
+        for(int j = 0;j<matrix[0].length;j++){
+            matrix[i][j] = result[i][j];
+        }
+    }
+}
+
+//This input row and columns and set 0 to entire row and column
+public void zeros(int[][] matrix, int row, int col){
+    for(int i = 0;i< matrix[0].length;i++){
+        matrix[row][i] = 0;
+    }
+
+
+    for(int j = 0;j< matrix.length;j++){
+        matrix[j][col] = 0;
+    }
+}
