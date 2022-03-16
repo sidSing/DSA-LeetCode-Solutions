@@ -1,0 +1,47 @@
+//https://leetcode.com/problems/spiral-matrix/discuss/1854178/Java-Easy-Peasy-Solution
+
+public List<Integer> spiralOrder(int[][] matrix) {
+ List<Integer> output = new ArrayList<>();
+    int top = 0;
+    int bottom = matrix.length-1;
+    int left = 0;
+    int right = matrix[0].length-1;
+
+    while(top<=bottom|| left<=right){
+        //Moving from left to right Iterating columns 👉
+        if(top<= bottom){
+            for(int i = left;i<=right;i++){
+                output.add(matrix[top][i]);
+            }
+            //After row is done increase row by 1 so it doesnt get scannned again
+            top++;
+        }
+        System.out.println(output);
+        if(right>= left){
+            //Moving from rightTop to rightBottom Iterating columns 👇
+            for(int i = top;i<=bottom;i++){
+                output.add(matrix[i][right]);
+            }
+            //After  rightColumn is done decrement column by 1 so it doesnt get scannned again
+            right--;
+        }
+        if(bottom >= top){
+            //Moving from bottomRight to bottomLeft Iterating columns 👈
+            for(int i = right ;i >= left;i--){
+                output.add(matrix[bottom][i]);
+            }
+             //After row is done increase row by 1 so it doesnt get scannned again
+            bottom--;
+        }
+        if(left <= right){
+            //Moving from leftBottom to leftTop Iterating columns ☝️
+            for(int i = bottom ;i >= top;i--){
+                output.add(matrix[i][left]);
+            }
+            //After leftColumn is done increment column by 1 so it doesnt get scannned again
+            left++;
+        }
+        System.out.println(output);
+    }
+    return output;
+}
