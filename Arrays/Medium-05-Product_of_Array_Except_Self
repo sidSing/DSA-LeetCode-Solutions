@@ -1,0 +1,22 @@
+//https://leetcode.com/problems/product-of-array-except-self/discuss/1853890/Java-Solution-Easy
+
+public int[] productExceptSelf(int[] nums) {
+     int[] result = new int[nums.length];
+    result[0] = 1;
+    //Running from left
+    for(int i = 1;i< nums.length;i++){
+        //Result[0] already set to 1
+        //Every element when starting from left only shows he product of element before it.
+        result[i] = result[i-1]*nums[i-1];
+    }
+    int num = 1;
+    for(int i = nums.length-2;i>=0;i--){
+        //Every element when starting from right only shows he product of element after it.
+        //culminating the product
+        num *= nums[i+1];
+        //Showing the product of current element with product of elements after it to the right side
+        result[i]= result[i]*num;
+    }
+    System.out.println(Arrays.toString(result));
+    return result;
+}
