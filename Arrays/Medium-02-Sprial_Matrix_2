@@ -1,0 +1,46 @@
+//https://leetcode.com/problems/spiral-matrix-ii/discuss/1854187/Java-Easy-Peasy-Solution
+
+public int[][] generateMatrix(int n) {
+    int[][] result = new int[n][n];
+    //index is simple increments and inputs value in fields
+    int index = 1;
+    int top = 0;
+    int bottom = result.length-1;
+    int left = 0;
+    int right = result[0].length-1;
+    while(top<=bottom||left<=right){
+        if(top<=bottom){
+            //Moving from left to right Iterating columns 👉
+            for(int i = left ;i <= right ; i++){
+                result[top][i] = index++;
+            }
+             //After row is done increase row by 1 so it doesnt get scannned again
+            top++;
+        }
+        if(right>=left){
+            //Moving from rightTop to rightBottom Iterating columns 👇
+            for(int i = top ;i <= bottom ; i++){
+                result[i][right] = index++;
+            }
+            //After  rightColumn is done decrement column by 1 so it doesnt get scannned again
+            right--;
+        }
+        if(bottom>=left){
+            //Moving from bottomRight to bottomLeft Iterating columns 👈
+            for(int i = right ;i >= left ; i--){
+                result[bottom][i] = index++;
+            }
+             //After row is done increase row by 1 so it doesnt get scannned again
+            bottom--;
+        }
+        if(left<=right){
+            //Moving from leftBottom to leftTop Iterating columns ☝️
+            for(int i = bottom ;i >= top ; i--){
+                result[i][left] = index++;
+            }
+            //After leftColumn is done increment column by 1 so it doesnt get scannned again
+            left++;
+        }
+    }
+    return result;
+}
