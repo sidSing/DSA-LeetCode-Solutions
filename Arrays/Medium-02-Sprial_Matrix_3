@@ -1,0 +1,36 @@
+//https://leetcode.com/problems/spiral-matrix-iii/discuss/1854160/Easy-solution-with-video-explination
+
+//https://www.youtube.com/watch?v=0qep3f9cqVs
+//☝️☝️ Best explination
+
+public int[][] spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
+   int[][] result = new int[rows*cols][2];
+    int i = 0;
+    //Default starting number
+    result[i++] = new int[]{rStart,cStart};
+    int length = 0;
+    //Indicates the direction of flow
+    int d = 0;
+    //Direction Matrix
+    int[] direction = new int[]{0,1,0,-1,0};
+    while(i<rows*cols){
+        //tells how long will the loop run
+        if(d==0 || d==2){
+            length++;
+        }
+        for(int k = 0;k<length;k++){
+            //increasing Row pointer
+            rStart += direction[d];
+            //increasing Column pointer
+            cStart +=direction[d+1];
+            
+            //Condition to check if index isn't going out of bound
+            if(rStart<rows&& rStart>=0 && cStart<cols&& cStart>=0){
+                result[i++] = new int[]{rStart,cStart};
+            }
+        }
+        //When d reaches 4 ~~ 4%4 == 0 it rests to 0
+        d= ++d % 4;
+    }
+    return result;
+}
